@@ -10,6 +10,6 @@ interface ArticleDao {
     @SqlUpdate("insert into articles SET userId=:article.userId, url=:article.url, title=:article.title")
     fun insert(article: Article)
 
-    @SqlQuery("select * from articles WHERE userId=:userId")
+    @SqlQuery("select * from articles WHERE userId=:userId ORDERED BY createdAt DESC")
     fun get(@Bind("userId") userId:String) : List<Article>
 }
