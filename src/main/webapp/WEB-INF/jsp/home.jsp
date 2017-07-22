@@ -31,7 +31,7 @@
     </div>
     <div class="row">
         <div class="col-lg-6">
-            <h4><a href="javascript: function iprl5() {var d = document, z = d.createElement('scr' + 'ipt'), b = d.body, l = d.location; var p = '8080'; if (l.protocol.includes('s') || l.protocol.includes('S')) {p = '8443'; } try {if (!b) throw (0); d.title = '(Saving...) ' + d.title; z.setAttribute('src', l.protocol + '//localhost:' + p + '/post?code=${code}&u=' + encodeURIComponent(l.href) + '&t=' + (new Date().getTime()) + '&n=' + encodeURIComponent(d.title)); b.appendChild(z); } catch (e) {alert('Please wait until the page has loaded.'); } } iprl5(); void(0)"> Add to WIR</a></h4>
+            <h4><a href="javascript: function iprl5() {var d = document, z = d.createElement('scr' + 'ipt'), b = d.body, l = d.location; var h = l.host; try {if (!b) throw (0); d.title = '(Saving...) ' + d.title; z.setAttribute('src', l.protocol + '//' + host + '/post?code=${code}&u=' + encodeURIComponent(l.href) + '&t=' + (new Date().getTime()) + '&n=' + encodeURIComponent(d.title)); b.appendChild(z); } catch (e) {alert('Please wait until the page has loaded.'); } } iprl5(); void(0)"> Add to WIR</a></h4>
         <p>Bookmark the above link and use it save articles you've read to WIR.</p>
         </div>
         <div class="col-lg-6">
