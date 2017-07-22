@@ -34,34 +34,34 @@ import org.springframework.web.servlet.config.annotation.*
 import java.util.ArrayList
 
 
-@Configuration
-@ComponentScan
-open class WebConfig {
-
-    @Bean
-    open fun servletContainer(): EmbeddedServletContainerFactory {
-        val tomcat =  object : TomcatEmbeddedServletContainerFactory() {
-            override fun postProcessContext(context: Context) {
-                val securityConstraint = SecurityConstraint()
-                securityConstraint.userConstraint = "CONFIDENTIAL"
-                val collection = SecurityCollection()
-                collection.addPattern("/*")
-                securityConstraint.addCollection(collection)
-                context.addConstraint(securityConstraint)
-            }
-        }
-
-        tomcat.addAdditionalTomcatConnectors(initiateHttpConnector());
-        return tomcat
-    }
-
-    private fun initiateHttpConnector(): Connector {
-        val connector = Connector("org.apache.coyote.http11.Http11NioProtocol")
-        connector.scheme = "http"
-        connector.port = 8080
-        connector.secure = false
-        connector.redirectPort = 8443
-
-        return connector
-    }
-}
+//@Configuration
+//@ComponentScan
+//open class WebConfig {
+//
+//    @Bean
+//    open fun servletContainer(): EmbeddedServletContainerFactory {
+//        val tomcat =  object : TomcatEmbeddedServletContainerFactory() {
+//            override fun postProcessContext(context: Context) {
+//                val securityConstraint = SecurityConstraint()
+//                securityConstraint.userConstraint = "CONFIDENTIAL"
+//                val collection = SecurityCollection()
+//                collection.addPattern("/*")
+//                securityConstraint.addCollection(collection)
+//                context.addConstraint(securityConstraint)
+//            }
+//        }
+//
+//        tomcat.addAdditionalTomcatConnectors(initiateHttpConnector());
+//        return tomcat
+//    }
+//
+//    private fun initiateHttpConnector(): Connector {
+//        val connector = Connector("org.apache.coyote.http11.Http11NioProtocol")
+//        connector.scheme = "http"
+//        connector.port = 8080
+//        connector.secure = false
+//        connector.redirectPort = 8443
+//
+//        return connector
+//    }
+//}
