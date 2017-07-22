@@ -5,17 +5,17 @@ import javax.sql.DataSource
 
 object Database {
 
-    const val HOST:String = "HOST"
+    const val HOST:String = "DB_HOST"
 
-    const val NAME:String = "NAME"
+    const val NAME:String = "DB_NAME"
 
-    const val USERNAME:String = "USERNAME"
+    const val USERNAME:String = "DB_USERNAME"
 
-    const val PASSWORD:String = "PASSWORD"
+    const val PASSWORD:String = "DB_PASSWORD"
 
-    const val SSL:String = "SSL"
+    const val SSL:String = "DB_SSL"
 
-    const val PORT:String = "PORT"
+    const val PORT:String = "DB_PORT"
 
     fun jdbcUrl(host: String, port: Int, dbName: String, requireSSL: Boolean, debug: Boolean): String {
         val builder = StringBuilder()
