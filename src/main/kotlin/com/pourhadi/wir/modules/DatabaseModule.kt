@@ -20,7 +20,7 @@ open class DataSource: HikariDataSource() {
         val envProp = Env.get("ENV")
         if (envProp.getProperty("ENV") == "PROD") {
             val props = Env.get("CLEARDB_DATABASE_URL")
-            jdbcUrl = "jdbi:" + props.getProperty("CLEARDB_DATABASE_URL")
+            jdbcUrl = "jdbc:" + props.getProperty("CLEARDB_DATABASE_URL")
         } else {
             val props = Env.get(Database.HOST, Database.NAME, Database.USERNAME, Database.PASSWORD, Database.SSL, Database.PORT)
             jdbcUrl = Database.jdbcUrl(props.getProperty(Database.HOST),
