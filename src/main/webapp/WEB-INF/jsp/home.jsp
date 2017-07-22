@@ -37,14 +37,13 @@
         <div class="col-lg-6">
             <ul>
                 <c:forEach var="article" items="${articles}">
-                    <li><a href='<c:out value="${article.url}"/>'><c:out value="${article.title}"/></a></li>
+                    <li><a href='<c:out value="${article.url}"/>'><c:out value="${article.title}"/></a> - <c:out value="${article.source}" /></li>
                 </c:forEach>
             </ul>
         </div>
     </div>
 
     <footer class="footer">
-        <p> &copy; 2016 Company Inc</p>
     </footer>
 
 </div>
