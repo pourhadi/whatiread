@@ -1,0 +1,20 @@
+
+CREATE TABLE articles (
+  `id` int(36) unsigned NOT NULL AUTO_INCREMENT,
+  userId       VARCHAR(64)  NOT NULL,
+  url       text            NOT NULL,
+  title        VARCHAR(255),
+  createdAt TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  upadtedAt TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE user_codes (
+      `id` int(36) unsigned NOT NULL AUTO_INCREMENT,
+      userId   VARCHAR(64) NOT NULL,
+        code VARCHAR(64)    NOT NULL,
+        createdAt TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP,
+        updatedAt TIMESTAMP    NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+          PRIMARY KEY (id)
+);
+
