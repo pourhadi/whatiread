@@ -27,7 +27,7 @@ open class ArticleEndpoint : Endpoint() {
              @RequestHeader headers: Map<String, String>): DeferredResult<String> {
         val result = DeferredResult<String>()
 
-        var titleTrimmed = n
+        var titleTrimmed = n.removePrefix("(Saving...) ")
         if (titleTrimmed.length > 255) {
             titleTrimmed = n.substring(IntRange(0, 254))
         }
