@@ -12,4 +12,7 @@ interface ArticleDao {
 
     @SqlQuery("select * from articles WHERE userId=:userId ORDER BY createdAt DESC")
     fun get(@Bind("userId") userId:String) : List<Article>
+
+    @SqlQuery("select * from articles ORDER BY createdAt DESC LIMIT :limit")
+    fun get(@Bind("limit") limit:Int) : List<Article>
 }
