@@ -4,6 +4,7 @@ import com.pourhadi.wir.data.dao.ArticleDao
 import com.pourhadi.wir.data.entity.Article
 import com.pourhadi.wir.modules.DataSource
 import org.jdbi.v3.core.Jdbi
+import org.jdbi.v3.sqlobject.transaction.Transaction
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import rx.Single
@@ -21,13 +22,13 @@ class ArticleService @Autowired constructor(dataSource: DataSource) : BaseServic
                                        val articleId = UUID.randomUUID()
                                        val urlId = UUID.randomUUID()
 
-                                       articleDao.insertArticle(userId.toString(),
-                                                                articleId.toString(),
-                                                                urlId.toString(),
-                                                                title,
-                                                                url,
-                                                                URL(url).host)
-
+                                      articleDao.insertUrl(articleId.toString(),
+                                                           title,
+                                                           url,
+                                                           URL(url).host)
+                                       articleDao.insert(articleId.toString(),
+                                                         urlId.toString(),
+                                                         userId)
                                        Article(articleId.toString(), userId.toString(), url, title)
                                    })
     }
