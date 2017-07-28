@@ -19,17 +19,17 @@ class UserService @Autowired constructor(dataSource: DataSource) : BaseService(J
         return Single.fromCallable {
             val newId = UUID.randomUUID().toString()
             userDao.insertCode(newId, userId, code)
-            newId
+            code
         }
     }
 
-    fun getCode(id: String): Single<UserCode> {
+    fun getCode(id: String): Single<String> {
         return Single.fromCallable {
             userDao.getCode(id)
         }
     }
 
-    fun getFromCode(code: String): Single<UserCode> {
+    fun getFromCode(code: String): Single<String> {
         return Single.fromCallable {
             userDao.getFromCode(code)
         }

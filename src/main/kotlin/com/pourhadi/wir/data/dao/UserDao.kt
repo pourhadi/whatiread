@@ -9,11 +9,11 @@ import javax.management.monitor.StringMonitor
 
 interface UserDao {
 
-    @SqlQuery("select * from user_codes where userId=:id")
-    fun getCode(@Bind("id") id: String): UserCode
+    @SqlQuery("select code from user_codes where userId=:id")
+    fun getCode(@Bind("id") id: String): String
 
-    @SqlQuery("select * from user_codes where code=:code")
-    fun getFromCode(@Bind("code") code: String): UserCode
+    @SqlQuery("select userId from user_codes where code=:code")
+    fun getFromCode(@Bind("code") code: String): String
 
     @SqlUpdate("insert into user_codes SET id=:id, userId=:userId, code=:code")
     fun insertCode(id: String,

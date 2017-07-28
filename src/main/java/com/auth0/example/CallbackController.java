@@ -72,13 +72,9 @@ public class CallbackController {
                 userService.getCode(id)
                            .flatMap(response -> {
                                if (response != null) {
-                                   return Single.just(response.getCode());
+                                   return Single.just(response);
                                }
-
-                               UserCode code = new UserCode(null,
-                                                            id,
-                                                            UUID.randomUUID().toString());
-                               return userService.createCode(code).map(returnedCode -> code.getCode());
+                               return userService.createCode(id, UUID.randomUUID().toString());
                            })
                            .subscribe(code -> {
                                try {
