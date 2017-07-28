@@ -7,19 +7,32 @@ import org.jdbi.v3.core.Jdbi
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 import rx.Single
+import java.net.URL
+import java.util.*
 
 @Service
 class ArticleService @Autowired constructor(dataSource: DataSource) : BaseService(Jdbi.create(dataSource)) {
     val articleDao: ArticleDao = jdbi.onDemand(ArticleDao::class.java)
 
-    fun create(article: Article): Single<Article> {
+    fun add(userId: String,
+            title: String,
+            url: String): Single<Article> {
         return Single.fromCallable({
-            articleDao.insert(article)
-            article
-        })
+                                       val articleId = UUID.randomUUID()
+                                       val urlId = UUID.randomUUID()
+
+                                       articleDao.insertArticle(userId.toString(),
+                                                                articleId.toString(),
+                                                                urlId.toString(),
+                                                                title,
+                                                                url,
+                                                                URL(url).host)
+
+                                       Article(articleId.toString(), userId.toString(), url, title)
+                                   })
     }
 
-    fun get(userId: String) : List<Article> {
+    fun get(userId: String): List<Article> {
         return articleDao.get(userId)
     }
 }

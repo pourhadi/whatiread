@@ -14,10 +14,12 @@ import java.util.*
 class UserService @Autowired constructor(dataSource: DataSource) : BaseService(Jdbi.create(dataSource)) {
     val userDao: UserDao = jdbi.onDemand(UserDao::class.java)
 
-    fun createCode(code: UserCode): Single<UserCode> {
+    fun createCode(userId: String,
+                   code: String): Single<String> {
         return Single.fromCallable {
-            userDao.insertCode(code)
-            code
+            val newId = UUID.randomUUID().toString()
+            userDao.insertCode(newId, userId, code)
+            newId
         }
     }
 

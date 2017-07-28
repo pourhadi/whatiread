@@ -49,10 +49,9 @@
                 <div class="col-md-4">
                     <h1>Top Sources</h1>
                     <ul>
-                        <li>Item 1</li>
-                        <li>Item 2</li>
-                        <li>Item 3</li>
-                        <li>Item 4</li>
+                        <c:forEach var="article" items="${topHosts}">
+                            <li><a href='<c:out value="${article.url}"/>'><c:out value="${article.title}"/></a> - <c:out value="${article.source}" /></li>
+                        </c:forEach>
                     </ul>
                 </div>
             </div>

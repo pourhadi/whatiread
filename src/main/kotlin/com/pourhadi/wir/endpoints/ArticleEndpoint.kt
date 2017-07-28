@@ -32,7 +32,9 @@ open class ArticleEndpoint : Endpoint() {
             titleTrimmed = n.substring(IntRange(0, 254))
         }
         userService!!.getFromCode(code)
-            .flatMap { response -> articleService!!.create(Article(response.userId, titleTrimmed, u)) }
+            .flatMap { response -> articleService!!.add(response.id,
+                                                        titleTrimmed,
+                                                        u) }
             .observeOn(Schedulers.immediate())
             .subscribe({ _ ->
                            result.setResult("redirect:" + u)
