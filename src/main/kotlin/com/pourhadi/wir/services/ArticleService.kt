@@ -29,7 +29,7 @@ class ArticleService @Autowired constructor(dataSource: DataSource) : BaseServic
                                        articleDao.insert(articleId.toString(),
                                                          urlId.toString(),
                                                          userId)
-                                       Article(articleId.toString(), userId.toString(), url, title)
+                                       Article(articleId.toString(), userId, url, title)
                                    })
     }
 

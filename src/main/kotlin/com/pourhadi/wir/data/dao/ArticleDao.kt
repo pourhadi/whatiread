@@ -21,10 +21,14 @@ interface ArticleDao {
                            url: String,
                            host: String)
 
-    @SqlQuery("select * from articles WHERE userId=:userId ORDER BY createdAt DESC")
+    @SqlQuery("select * from articles " +
+              "INNER JOIN urls on articles.urlId = urls.id " +
+              "WHERE userId=:userId ORDER BY createdAt DESC")
     fun get(@Bind("userId") userId: String): List<Article>
 
-    @SqlQuery("select * from articles ORDER BY createdAt DESC LIMIT :limit")
+    @SqlQuery("select * from articles " +
+              "INNER JOIN urls on articles.urlId = urls.id " +
+              "ORDER BY createdAt DESC LIMIT :limit")
     fun get(@Bind("limit") limit: Int): List<Article>
 
     @SqlQuery("select host " +
