@@ -23,7 +23,7 @@ interface ArticleDao {
 
     @SqlQuery("select * from articles " +
               "INNER JOIN urls on articles.urlId = urls.id " +
-              "WHERE articles.userId=:userId ORDER BY createdAt DESC")
+              "WHERE articles.userId=:userId ORDER BY articles.createdAt DESC")
     fun get(@Bind("userId") userId: String): List<Article>
 
     @SqlQuery("select * from articles " +

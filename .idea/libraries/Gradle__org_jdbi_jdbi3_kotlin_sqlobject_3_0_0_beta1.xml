@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="Gradle: org.jdbi:jdbi3-kotlin-sqlobject:3.0.0-beta1">
+    <CLASSES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jdbi/jdbi3-kotlin-sqlobject/3.0.0-beta1/b530b64b86487e256a2a2394c3b7d8c6f7b3d755/jdbi3-kotlin-sqlobject-3.0.0-beta1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jdbi/jdbi3-kotlin-sqlobject/3.0.0-beta1/64ac21e74ac9b34c8cf2dcd9f28a31aa0d1c4a97/jdbi3-kotlin-sqlobject-3.0.0-beta1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
