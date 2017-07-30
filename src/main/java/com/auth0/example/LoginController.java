@@ -15,10 +15,12 @@ import static com.pourhadi.wir.WhatIReadApplicationKt.isDebug;
 @Controller
 public class LoginController {
 
-    @Autowired
-    private AuthController controller;
+    private final AuthController controller;
 
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
+
+    @Autowired
+    public LoginController(AuthController controller) {this.controller = controller;}
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     protected String login(final HttpServletRequest req) {
