@@ -12,14 +12,14 @@ interface ArticleDao {
 
     @SqlUpdate("insert into articles SET id=:id, urlId=:urlId, userId=:userId")
     fun insert(id: String,
-                        urlId: String,
-                        userId: String)
+               urlId: String,
+               userId: String)
 
     @SqlUpdate("insert into urls SET id=:id, title=:title, url=:url, host=:host")
     fun insertUrl(id: String,
-                           title: String,
-                           url: String,
-                           host: String)
+                  title: String,
+                  url: String,
+                  host: String)
 
     @SqlQuery("select * from articles " +
               "INNER JOIN urls on articles.urlId = urls.id " +

@@ -50,7 +50,7 @@
                     <h1>Top Sources</h1>
                     <ul>
                         <c:forEach var="article" items="${topHosts}">
-                            <li><a href='<c:out value="${article.url}"/>'><c:out value="${article.title}"/></a> - <c:out value="${article.source}" /></li>
+                            <li><a href='<c:out value="${article}"/>'><c:out value="${article}"/></a></li>
                         </c:forEach>
                     </ul>
                 </div>

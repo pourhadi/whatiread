@@ -22,7 +22,7 @@ class ArticleService @Autowired constructor(dataSource: DataSource) : BaseServic
                                        val articleId = UUID.randomUUID()
                                        val urlId = UUID.randomUUID()
 
-                                      articleDao.insertUrl(articleId.toString(),
+                                      articleDao.insertUrl(urlId.toString(),
                                                            title,
                                                            url,
                                                            URL(url).host)
