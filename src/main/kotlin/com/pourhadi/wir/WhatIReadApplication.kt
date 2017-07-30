@@ -1,6 +1,7 @@
 package com.pourhadi.wir
 
 import com.pourhadi.wir.endpoints.ArticleEndpoint
+import com.pourhadi.wir.util.Env
 import com.pourhadi.wir.util.ObservableReturnValueHandler
 import org.springframework.boot.SpringApplication
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration
@@ -22,4 +23,9 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 open class WhatIReadApplication
 fun main(args: Array<String>) {
     SpringApplication.run(WhatIReadApplication::class.java, *args)
+}
+
+
+fun isDebug(): Boolean {
+    return Env.get("ENV")["ENV"] as Boolean
 }
