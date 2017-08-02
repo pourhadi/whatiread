@@ -9,32 +9,25 @@ import javax.management.monitor.StringMonitor
 
 interface ArticleDao {
 
-
-    @SqlUpdate("insert into articles SET id=:id, urlId=:urlId, userId=:userId")
+    @SqlUpdate("insert into articles SET id=:id, userId=:userId, title=:title, url=:url, host=:host")
     fun insert(id: String,
-               urlId: String,
-               userId: String)
-
-    @SqlUpdate("insert into urls SET id=:id, title=:title, url=:url, host=:host")
-    fun insertUrl(id: String,
+                  userId: String,
                   title: String,
                   url: String,
                   host: String)
 
     @SqlQuery("select * from articles " +
-              "INNER JOIN urls on articles.urlId = urls.id " +
-              "WHERE articles.userId=:userId ORDER BY articles.createdAt DESC")
+              "WHERE userId=:userId ORDER BY createdAt DESC")
     fun get(@Bind("userId") userId: String): List<Article>
 
     @SqlQuery("select * from articles " +
-              "INNER JOIN urls on articles.urlId = urls.id " +
-              "ORDER BY articles.createdAt DESC LIMIT :limit")
+              "ORDER BY createdAt DESC LIMIT :limit")
     fun get(@Bind("limit") limit: Int): List<Article>
 
     @SqlQuery("select host " +
               "from (" +
               "select host " +
-              "from urls " +
+              "from articles " +
               "group by host " +
               "order by COUNT(host) DESC " +
               "LIMIT :limit" +

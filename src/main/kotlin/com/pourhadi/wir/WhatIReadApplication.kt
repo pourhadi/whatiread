@@ -26,6 +26,6 @@ fun main(args: Array<String>) {
 }
 
 
-fun isDebug(): Boolean {
-    return Env.get("ENV").getProperty("ENV") == "DEBUG"
+fun isDev(): Boolean {
+    return Env.get("ENV").getProperty("ENV") == "DEV"
 }

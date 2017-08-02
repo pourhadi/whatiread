@@ -19,17 +19,15 @@ class ArticleService @Autowired constructor(dataSource: DataSource) : BaseServic
             title: String,
             url: String): Single<Article> {
         return Single.fromCallable({
-                                       val articleId = UUID.randomUUID()
                                        val urlId = UUID.randomUUID()
 
-                                      articleDao.insertUrl(urlId.toString(),
+                                      articleDao.insert(urlId.toString(),
+                                                           userId,
                                                            title,
                                                            url,
                                                            URL(url).host)
-                                       articleDao.insert(articleId.toString(),
-                                                         urlId.toString(),
-                                                         userId)
-                                       Article(articleId.toString(), userId, url, title)
+
+                                       Article(urlId.toString(), userId, url, title)
                                    })
     }
 

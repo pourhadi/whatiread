@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.servlet.http.HttpServletRequest;
 
-import static com.pourhadi.wir.WhatIReadApplicationKt.isDebug;
+import static com.pourhadi.wir.WhatIReadApplicationKt.isDev;
 
 @SuppressWarnings("unused")
 @Controller
@@ -27,7 +27,7 @@ public class LoginController {
         logger.debug("Performing login");
 
         String redirectUri;
-        if (isDebug()) {
+        if (isDev()) {
             redirectUri = req.getScheme() + "://" + req.getServerName() + ":" + req.getServerPort() + "/callback";
         } else {
             redirectUri = req.getScheme() + "://" + req.getServerName() + "/callback";

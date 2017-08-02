@@ -14,12 +14,40 @@ import java.util.*
 class UserService @Autowired constructor(dataSource: DataSource) : BaseService(Jdbi.create(dataSource)) {
     val userDao: UserDao = jdbi.onDemand(UserDao::class.java)
 
-    fun createCode(userId: String,
-                   code: String): Single<String> {
+    fun create(auth0Id: String,
+               nickname: String,
+               email: String): Single<User> {
         return Single.fromCallable {
             val newId = UUID.randomUUID().toString()
-            userDao.insertCode(newId, userId, code)
-            code
+            val code = UUID.randomUUID().toString()
+            userDao.insert(newId, auth0Id, nickname, email, code)
+        }.flatMap { get(auth0Id) }
+    }
+
+    fun update(auth0Id: String,
+               nickname: String,
+               email: String) : Single<User> {
+        return Single.fromCallable {
+            userDao.update(auth0Id, nickname, email)
+        }.flatMap { get(auth0Id) }
+    }
+
+    fun updateAndGetOrCreate(auth0Id: String,
+                             nickname: String,
+                             email: String): Single<User> {
+        return get(auth0Id).flatMap { result ->
+            if (result == null) {
+                create(auth0Id, nickname, email)
+            } else {
+                update(auth0Id, nickname, email)
+            }
+        }
+
+    }
+
+    fun get(auth0Id: String): Single<User?> {
+        return Single.fromCallable {
+            userDao.get(auth0Id)
         }
     }
 

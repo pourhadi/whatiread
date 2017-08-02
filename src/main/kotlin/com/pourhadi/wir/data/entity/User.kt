@@ -7,15 +7,8 @@ import java.util.*
 
 data class User(
     val id: String,
+    val auth0Id: String,
     val email: String,
     val nickname: String,
     val code: String
-               ) {
-
-
-    @JsonCreator
-    constructor(userInfo: UserInfo, code: String) : this(userInfo.values["user_id"] as String,
-                                                         userInfo.values["email"] as String,
-                                                         userInfo.values["nickname"] as String,
-                                                         code)
-}
+               )

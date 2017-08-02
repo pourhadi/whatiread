@@ -69,16 +69,12 @@ public class CallbackController {
             try {
                 UserInfo userInfo = (UserInfo) request.execute();
                 String id = (String) userInfo.getValues().get("user_id");
-                userService.getCode(id)
-                           .flatMap(response -> {
-                               if (response != null) {
-                                   return Single.just(response);
-                               }
-                               return userService.createCode(id, UUID.randomUUID().toString());
-                           })
-                           .subscribe(code -> {
+                String email = (String) userInfo.getValues().get("email");
+                String nickname = (String) userInfo.getValues().get("nickname");
+
+                userService.updateAndGetOrCreate(id, nickname, email)
+                           .subscribe(user -> {
                                try {
-                                   User user = new User(userInfo, code);
                                    SessionUtils.set(req, "user", user);
 
                                    String original = (String)SessionUtils.get(req, SessionVars.INSTANCE.getORIGINAL_URI());
@@ -99,7 +95,6 @@ public class CallbackController {
                                    e.printStackTrace();
                                }
                            });
-
 
             } catch (Auth0Exception e) {
                 res.sendRedirect(redirectOnFail);
