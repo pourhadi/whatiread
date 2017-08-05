@@ -24,6 +24,9 @@ repositories {
 }
 
 dependencies {
+    compile 'com.github.jknack:handlebars:4.0.6'
+    compile 'pl.allegro.tech.boot:handlebars-spring-boot-starter:0.2.15'
+
     compile "org.flywaydb:flyway-core"
     compile 'io.reactivex:rxjava:1.1.6'
     compile group: 'org.jdbi', name: 'jdbi3-spring4', version: '3.0.0-beta1'

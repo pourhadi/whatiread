@@ -14,8 +14,6 @@ import org.springframework.web.method.support.HandlerMethodReturnValueHandler
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
-
-
 @SpringBootApplication
 @ComponentScan(basePackages = arrayOf("com.auth0.example", "com.pourhadi.wir"))
 @EnableAutoConfiguration
