@@ -18,7 +18,12 @@ open class IndexController @Autowired constructor(val articleDao: ArticleDao){
         model.addAttribute("mostRecent", mostRecent)
 
         val topHosts = articleDao.getTopHosts(10)
-        model.addAttribute("topHosts", topHosts)
+
+        val topHostsMap = HashMap<String, String>()
+        for (host in topHosts) {
+            topHostsMap.put("name", host)
+        }
+        model.addAttribute("topHosts", topHostsMap)
         return "index"
     }
 
