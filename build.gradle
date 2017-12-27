@@ -34,6 +34,9 @@ dependencies {
     compile "mysql:mysql-connector-java"
     compile 'com.zaxxer:HikariCP:2.6.2'
 
+    compile group: 'com.coinbase.api', name: 'coinbase-java', version: '1.10.0'
+
+
     // Jackson Dependencies
     compile "com.fasterxml.jackson.core:jackson-annotations"
     compile "com.fasterxml.jackson.core:jackson-core"
