@@ -21,8 +21,8 @@ class BtcController {
     }
 
 
-    @RequestMapping(value = "/btc/{code}/submit", method = arrayOf(RequestMethod.POST))
-        fun start(@PathVariable("code") code: String,
+    @RequestMapping(value = "/btc/submit", method = arrayOf(RequestMethod.POST))
+        fun start(@RequestParam code: String,
                   @RequestParam email: String,
                   model: Model,
                   req: HttpServletRequest): String {
