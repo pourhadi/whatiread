@@ -61,10 +61,13 @@ class BtcController @Autowired constructor(dataSource: DataSource) : BaseService
             send.to = email
             send.amount = Money.parse("USD $value.00")
             val sent = cb.sendMoney(send)
+
+            btcDao.setRedeemed(true, code)
+        } else {
+            return "btc_fail"
         }
 
-        model.addAttribute("code", value)
-        return "btc"
+        return "btc_sent"
     }
 
 }
