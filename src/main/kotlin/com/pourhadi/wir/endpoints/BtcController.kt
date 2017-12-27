@@ -41,7 +41,7 @@ class BtcController @Autowired constructor(dataSource: DataSource) : BaseService
                   model: Model,
                   req: HttpServletRequest): String {
         val cb = CoinbaseBuilder()
-            .withApiKey(System.getenv("Rf2LPC9EY2oYrvvx"), System.getenv("mumuzOS5WzQaMwLzpFWygnWsgkkYVi5f"))
+            .withApiKey("Rf2LPC9EY2oYrvvx", "mumuzOS5WzQaMwLzpFWygnWsgkkYVi5f")
             .build()
 
 
