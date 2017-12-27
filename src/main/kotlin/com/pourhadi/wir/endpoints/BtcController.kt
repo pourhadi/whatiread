@@ -7,6 +7,7 @@ import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RequestMethod
+import org.springframework.web.bind.annotation.RequestParam
 import javax.servlet.http.HttpServletRequest
 
 
@@ -20,12 +21,18 @@ class BtcController {
     }
 
 
-        fun start(@PathVariable("code") code: String) {
+    @RequestMapping(value = "/btc/{code}/submit", method = arrayOf(RequestMethod.POST))
+        fun start(@PathVariable("code") code: String,
+                  @RequestParam email: String,
+                  model: Model,
+                  req: HttpServletRequest): String {
         val cb = CoinbaseBuilder()
             .withApiKey(System.getenv("Rf2LPC9EY2oYrvvx"), System.getenv("mumuzOS5WzQaMwLzpFWygnWsgkkYVi5f"))
             .build()
 
 
+        model.addAttribute("code", email)
+        return "btc"
     }
 
 }
