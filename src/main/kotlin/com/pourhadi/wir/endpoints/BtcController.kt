@@ -3,6 +3,12 @@ package com.pourhadi.wir.endpoints
 import org.springframework.stereotype.Controller
 import com.coinbase.api.CoinbaseBuilder
 import com.coinbase.api.Coinbase
+import com.pourhadi.wir.data.dao.BtcDao
+import com.pourhadi.wir.data.dao.UserDao
+import com.pourhadi.wir.modules.DataSource
+import com.pourhadi.wir.services.BaseService
+import org.jdbi.v3.core.Jdbi
+import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.ui.Model
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
@@ -12,7 +18,10 @@ import javax.servlet.http.HttpServletRequest
 
 
 @Controller
-class BtcController {
+class BtcController @Autowired constructor(dataSource: DataSource) : BaseService(Jdbi.create(dataSource)){
+
+    val btcDao: BtcDao = jdbi.onDemand(BtcDao::class.java)
+
 
     @RequestMapping(value = "/btc/{code}", method = arrayOf(RequestMethod.GET))
     protected fun home(@PathVariable("code") code: String, model: Model, req: HttpServletRequest): String {
@@ -31,7 +40,12 @@ class BtcController {
             .build()
 
 
-        model.addAttribute("code", email)
+        val value = btcDao.getValueForCode(code)
+        if (value != 0) {
+
+        }
+
+        model.addAttribute("code", value)
         return "btc"
     }
 
